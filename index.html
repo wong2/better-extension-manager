@@ -1,0 +1,72 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Better Extension Manager</title> 
+        <link rel="stylesheet" type="text/css" href="css/reset.css" /> 
+        <link rel="stylesheet" type="text/css" href="css/style.css" /> 
+        <link rel="stylesheet" type="text/css" href="css/button.css" />
+        <script type="text/javascript" src="js/jquery-1.6.1.min.js"></script> 
+        <script type="text/javascript" src="js/jquery.tmpl.min.js"></script> 
+        <script id="listTemplate" type="text/x-jquery-tmpl">
+            <li class="{{if enabled}}enabled{{else}}disabled{{/if}}">
+                <div class="ext-left">
+                    <img class="ext-icon" src="${icon}">
+                </div>
+                <div class="ext-right">
+                    <img class="ext-star" src="images/{{if stared}}star1{{else}}star0{{/if}}.png" />
+                    <a class="ext-name" href="${homepageUrl}" target="_blank">${name}</a>
+                    <p class="ext-intro">${description}</p>
+                    <p class="ext-version">Version: ${version}</p>
+                    <p class="ext-id">ID: ${id}</p>
+                    <input type="checkbox" class="checkbox" />
+                    <input type="button" value="{{if enabled}}disable{{else}}enable{{/if}}" />
+                    <input type="button" value="uninstall" />
+                    {{if optionsUrl}}<input type="button" value="option" />{{/if}}
+                    {{if appLaunchUrl}}<input type="button" value="launch" />{{/if}}
+                </div>
+            </li>
+        </script>
+    </head> 
+    <body> 
+        <nav>
+            <header id="logo">
+                <img src="images/icon-48.png" />
+                <h1>Better Extension Manager</h1>
+            </header>
+            <ul id="filter">
+                <li class="highlight"><a id="all">All</a></li>
+                <hr>
+                <li><a id="app">Apps</a></li>
+                <li><a id="ext">Extensions</a></li>
+                <hr>
+                <li><a id="enabled">Enabled</a></li>
+                <li><a id="disabled">Disabled</a></li>
+                <hr>
+                <li><a id="stared">Stared</a></li>
+            </ul>
+            <footer>
+                <p>Developed by <a href="http://wong2.cn" target="_blank">wong2</a></p>
+                <p>Get the <a href="http://code.google.com/p/better-extension-manager/" target="_blank">source code</a></p>
+                <p>icon by <a href="http://dryicons.com" target="_blank">http://dryicons.com</a></p>
+            </footer>
+        </nav>
+        <section id="main" role="main">
+            <div class="fixed-top">
+                <div>
+                    <input type="text" id="keyword" autocomplete="off" placeholder="type to search" autofocus />
+                </div>
+                <div id="batch">
+                    <label>Select All</label><input type="checkbox" />
+                    <input type="button" id="batch_enable" value="enable selected" />
+                    <input type="button" id="batch_disable" value="disable selected" />
+                    <input type="button" id="batch_uninstall" value="uninstall selected" />
+                </div>
+            </div>
+            <div class="list-container">
+                <ul id="ext-list"></ul>
+            </div>
+        </section>
+        <script type="text/javascript" src="js/js.js"></script>
+    </body> 
+</html> 
